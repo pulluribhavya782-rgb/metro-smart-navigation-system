@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Booked Tickets
+{% endblock %}
+
+{% block content %}
+
+<h1>Booked Tickets</h1>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>ID</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Passengers</th>
+        <th>Action</th>
+    </tr>
+
+    {% for ticket in tickets %}
+
+    <tr>
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.source }}</td>
+        <td>{{ ticket.destination }}</td>
+        <td>{{ ticket.travel_date }}</td>
+        <td>{{ ticket.passengers }}</td>
+
+        <td>
+            <a href="{% url 'navigation' ticket.id %}">
+                <button>Start Navigation</button>
+            </a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

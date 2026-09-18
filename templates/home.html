@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h2>Welcome to Metro Smart Navigation System</h2>
+
+    <p>Travel Smart, Navigate Easily.</p>
+
+    <a href="{% url 'book_ticket' %}">
+        <button>🎫 Book Ticket</button>
+    </a>
+
+</div>
+
+{% endblock %}

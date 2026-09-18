@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Metro Smart Navigation
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+
+<div class="navigation-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="nav-header">
+
+        <div class="logo-section">
+            <div class="metro-logo">🚇</div>
+
+            <h1>Metro Smart Navigation</h1>
+        </div>
+
+        <button class="voice-button" onclick="toggleVoice()">
+            🔊 <span id="voiceStatus">Voice On</span>
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN AREA ================= -->
+
+    <div class="navigation-body">
+
+
+        <!-- ================= LEFT PANEL ================= -->
+
+        <aside class="left-panel">
+
+
+            <!-- YOUR TRIP -->
+
+            <div class="card trip-card">
+
+                <h2>☷ &nbsp; Your Trip</h2>
+
+                <div class="trip-item">
+
+                    <span class="location-icon green">●</span>
+
+                    <div>
+                        <small>From</small>
+                        <strong>{{ ticket.source }}</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="trip-connector"></div>
+
+
+                <div class="trip-item">
+
+                    <span class="location-icon red">●</span>
+
+                    <div>
+                        <small>To</small>
+
+                        <strong class="destination">
+                            {{ ticket.destination }}
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="trip-item platform-item">
+
+                    <span class="train-icon">🚇</span>
+
+                    <div>
+                        <small>Platform</small>
+
+                        <strong>
+                            {{ platform }}
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- START NAVIGATION -->
+
+            <button
+                class="start-button"
+                onclick="startNavigation()"
+                id="startButton"
+            >
+
+                <span id="startIcon">▶</span>
+
+                <span id="startText">
+                    Start Navigation
+                </span>
+
+            </button>
+
+
+            <!-- INSTRUCTIONS -->
+
+            <div class="card instruction-card">
+
+                <div class="instruction-title">
+
+                    <h2>Navigation Instructions</h2>
+
+                    <button
+                        class="speak-small"
+                        onclick="speakInstructions()"
+                    >
+                        🎙️
+                    </button>
+
+                </div>
+
+
+                <div class="instructions">
+
+                    <p>↗ <b>1.</b> Start from Entry</p>
+
+                    <p>→ <b>2.</b> Turn right</p>
+
+                    <p>↓ <b>3.</b> Go straight</p>
+
+                    <p>← <b>4.</b> Turn left</p>
+
+                    <p>↓ <b>5.</b> Go straight</p>
+
+                    <p>→ <b>6.</b> Turn right</p>
+
+                    <p>↓ <b>7.</b> Reach Platform {{ platform }}</p>
+
+                    <p>→ <b>8.</b> Exit</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGEND -->
+
+            <div class="card legend-card">
+
+                <h2>Legend</h2>
+
+                <div class="legend-item">
+
+                    <span class="blue-dots"></span>
+
+                    <span>Your Path</span>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span>🧍</span>
+
+                    <span>You</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIVE STATUS -->
+
+            <div class="live-card">
+
+                <h2>♟ Live Status</h2>
+
+                <div class="live-person">
+
+                    <span>🧍</span>
+
+                    <span>
+                        You are at
+                        <strong id="currentLocation">
+                            Entry
+                        </strong>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAP AREA ================= -->
+
+        <main class="map-section">
+
+
+            <div class="map">
+
+
+                <!-- ENTRY -->
+
+                <div class="map-label entry-label">
+                    ENTRY
+                </div>
+
+
+                <!-- PERSON -->
+
+                <div
+                    class="person"
+                    id="person"
+                >
+                    🧍
+                </div>
+
+
+                <!-- SECURITY -->
+
+                <div class="map-label security-label">
+                    🛡️ &nbsp; SECURITY
+                </div>
+
+
+                <!-- QR GATE -->
+
+                <div class="map-label qr-label">
+                    ▦ &nbsp; QR GATE
+                </div>
+
+
+                <!-- CAFE -->
+
+                <div class="room cafe">
+
+                    <div class="room-icon">
+                        ☕
+                    </div>
+
+                    <b>CAFE</b>
+
+                    <div class="tables">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WASHROOM -->
+
+                <div class="room washroom">
+
+                    <div class="wash-icon">
+                        🚻
+                    </div>
+
+                    <b>WASHROOM</b>
+
+                </div>
+
+
+                <!-- MAIN CORRIDOR -->
+
+                <div class="corridor-label">
+                    MAIN CORRIDOR
+                </div>
+
+
+                <!-- ESCALATOR -->
+
+                <div class="escalator">
+
+                    <div class="escalator-symbol">
+                        ↗️
+                    </div>
+
+                    <b>ESCALATOR</b>
+
+                    <div class="escalator-arrows">
+                        ↗ &nbsp; ↗
+                    </div>
+
+                </div>
+
+
+                <!-- PLATFORM -->
+
+                <div class="platform-box">
+
+                    <span class="platform-icon">
+                        🚇
+                    </span>
+
+                    <b>
+                        PLATFORM {{ platform }}
+                    </b>
+
+                </div>
+
+
+                <!-- EXIT -->
+
+                <div class="exit-box">
+
+                    <div>🚪</div>
+
+                    <b>EXIT</b>
+
+                </div>
+
+
+                <!-- ================= ROUTE ================= -->
+
+                <svg
+                    class="path-svg"
+                    viewBox="0 0 1000 700"
+                    preserveAspectRatio="none"
+                >
+
+                    <path
+                        id="navigationPath"
+                        d="
+                            M 75 110
+                            L 350 110
+                            L 650 110
+                            L 650 300
+                            L 390 300
+                            L 390 390
+                            L 435 390
+                            L 435 500
+                            L 640 500
+                            L 640 580
+                            L 760 580
+                        "
+                    ></path>
+
+
+                    <path
+                        class="moving-path"
+                        d="
+                            M 75 110
+                            L 350 110
+                            L 650 110
+                            L 650 300
+                            L 390 300
+                            L 390 390
+                            L 435 390
+                            L 435 500
+                            L 640 500
+                            L 640 580
+                            L 760 580
+                        "
+                    ></path>
+
+                </svg>
+
+
+                <!-- ROUTE ARROWS -->
+
+                <div class="path-arrow arrow-1">
+                    →
+                </div>
+
+                <div class="path-arrow arrow-2">
+                    ↓
+                </div>
+
+                <div class="path-arrow arrow-3">
+                    ←
+                </div>
+
+                <div class="path-arrow arrow-4">
+                    ↓
+                </div>
+
+                <div class="path-arrow arrow-5">
+                    →
+                </div>
+
+                <div class="path-arrow arrow-6">
+                    ↓
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= MESSAGE ================= -->
+
+            <div class="bottom-message">
+
+                <button onclick="speakCurrentInstruction()">
+                    🔊
+                </button>
+
+                <span id="bottomMessage">
+                    Press Start Navigation to begin your journey.
+                </span>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= CHATBOT ================= -->
+
+    <section class="chatbot">
+
+        <div class="chatbot-header">
+            🤖 Metro Assistant
+        </div>
+
+
+        <div
+            id="chatMessages"
+            class="chat-messages"
+        >
+
+            <div class="bot-message">
+
+                Hello! 👋<br>
+
+                I am your Metro Assistant.<br>
+
+                How can I help you?
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask me something..."
+                onkeypress="chatEnter(event)"
+            >
+
+            <button onclick="sendChatMessage()">
+                Send
+            </button>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<script>
+    const metroDestination = "{{ ticket.destination|escapejs }}";
+    const metroPlatform = "{{ platform|escapejs }}";
+</script>
+
+<script src="{% static 'js/navigation.js' %}"></script>
+
+{% endblock %}

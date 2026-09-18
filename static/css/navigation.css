@@ -1,0 +1,914 @@
+/* =========================================================
+   METRO SMART NAVIGATION
+   CLEAN COMPLETE CSS
+   ========================================================= */
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #12346b;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.navigation-page {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 15px 20px 30px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.nav-header {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: #12346b;
+    color: white;
+
+    border-radius: 12px 12px 0 0;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.metro-logo {
+    font-size: 32px;
+}
+
+.logo-section h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.voice-button {
+    padding: 11px 18px;
+
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 9px;
+
+    background: transparent;
+    color: white;
+
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MAIN BODY
+   ========================================================= */
+
+.navigation-body {
+    display: grid;
+
+    grid-template-columns: 280px minmax(0, 1fr);
+
+    gap: 18px;
+
+    margin-top: 18px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   LEFT PANEL
+   ========================================================= */
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card,
+.live-card {
+    background: white;
+
+    border: 1px solid #d9e2ef;
+    border-radius: 10px;
+
+    padding: 16px;
+
+    box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+}
+
+.card h2,
+.live-card h2 {
+    margin: 0 0 15px;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   TRIP CARD
+   ========================================================= */
+
+.trip-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.trip-item small {
+    display: block;
+
+    color: #667085;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+}
+
+.trip-item strong {
+    display: block;
+
+    font-size: 16px;
+
+    color: #159447;
+}
+
+.destination {
+    color: #e53935 !important;
+}
+
+.location-icon {
+    font-size: 18px;
+}
+
+.green {
+    color: #159447;
+}
+
+.red {
+    color: #e53935;
+}
+
+.trip-connector {
+    width: 2px;
+    height: 14px;
+
+    margin-left: 8px;
+
+    background: #ccd5e2;
+}
+
+.platform-item {
+    margin-top: 8px;
+}
+
+.platform-item strong {
+    color: #12346b;
+}
+
+.train-icon {
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   START BUTTON
+   ========================================================= */
+
+.start-button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #1769e8;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 7px rgba(23,105,232,0.2);
+}
+
+.start-button:hover {
+    background: #1258ca;
+}
+
+
+/* =========================================================
+   INSTRUCTIONS
+   ========================================================= */
+
+.instruction-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.instruction-title h2 {
+    margin-bottom: 10px;
+}
+
+.speak-small {
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.instructions p {
+    margin: 9px 0;
+
+    color: #344054;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LEGEND
+   ========================================================= */
+
+.legend-item {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 10px 0;
+
+    color: #344054;
+
+    font-size: 14px;
+}
+
+.blue-dots {
+    width: 30px;
+
+    border-top: 4px dotted #1769e8;
+}
+
+
+/* =========================================================
+   LIVE STATUS
+   ========================================================= */
+
+.live-person {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #344054;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MAP SECTION
+   ========================================================= */
+
+.map-section {
+    min-width: 0;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+.map {
+    position: relative;
+
+    width: 100%;
+    height: 720px;
+
+    overflow: hidden;
+
+    border: 4px solid #777;
+    border-radius: 2px;
+
+    background-color: #f8f7f1;
+
+    background-image:
+        linear-gradient(#e5e5e566 1px, transparent 1px),
+        linear-gradient(90deg, #e5e5e566 1px, transparent 1px);
+
+    background-size: 40px 40px;
+}
+
+
+/* =========================================================
+   SVG ROUTE
+   ========================================================= */
+
+.path-svg {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+.path-svg path {
+    fill: none;
+
+    stroke: #1769e8;
+
+    stroke-width: 5;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1 13;
+}
+
+
+/* =========================================================
+   MAP LABELS
+   ========================================================= */
+
+.map-label {
+    position: absolute;
+
+    z-index: 10;
+
+    padding: 11px 18px;
+
+    background: white;
+
+    border: 1px solid #ccd5e2;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.entry-label {
+    left: 7%;
+    top: 6%;
+
+    background: #effaf3;
+
+    border-color: #b8d9c2;
+}
+
+.security-label {
+    left: 43%;
+    top: 6%;
+}
+
+.qr-label {
+    left: 67%;
+    top: 6%;
+
+    border-color: #c8a7f1;
+
+    color: #5d3b96;
+}
+
+
+/* =========================================================
+   CAFE
+   ========================================================= */
+
+.room {
+    position: absolute;
+
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 3px solid #aaa;
+
+    font-size: 15px;
+}
+
+.cafe {
+    left: 1%;
+    top: 36%;
+
+    width: 16%;
+    height: 30%;
+
+    background: #f7dddd;
+}
+
+.room-icon {
+    font-size: 27px;
+
+    margin-bottom: 8px;
+}
+
+.tables {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+.tables span {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #8c6b55;
+}
+
+
+/* =========================================================
+   WASHROOM
+   ========================================================= */
+
+.washroom {
+    right: 1%;
+    top: 36%;
+
+    width: 16%;
+    height: 30%;
+
+    background: #e1edf5;
+}
+
+.wash-icon {
+    font-size: 27px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   MAIN CORRIDOR
+   ========================================================= */
+
+.corridor-label {
+    position: absolute;
+
+    z-index: 8;
+
+    left: 42%;
+    top: 43%;
+
+    padding: 11px 20px;
+
+    background: #fff4d8;
+
+    border: 1px solid #e5b84d;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    color: #765719;
+}
+
+
+/* =========================================================
+   ESCALATOR
+   ========================================================= */
+
+.escalator {
+    position: absolute;
+
+    z-index: 8;
+
+    left: 35%;
+    top: 60%;
+
+    width: 18%;
+    height: 16%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e6f2ef;
+
+    border: 3px solid #9aa5a5;
+
+    border-radius: 8px;
+}
+
+.escalator-symbol {
+    font-size: 27px;
+}
+
+.escalator-arrows {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   PLATFORM
+   ========================================================= */
+
+.platform-box {
+    position: absolute;
+
+    z-index: 8;
+
+    left: 55%;
+    bottom: 11%;
+
+    width: 30%;
+    height: 12%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background: #eee5ff;
+
+    border: 2px solid #b99be8;
+
+    border-radius: 10px;
+
+    color: #5d3b96;
+
+    font-size: 23px;
+}
+
+.platform-icon {
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   EXIT
+   ========================================================= */
+
+.exit-box {
+    position: absolute;
+
+    z-index: 8;
+
+    right: 5%;
+    bottom: 4%;
+
+    width: 80px;
+    height: 70px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f5ec;
+
+    border: 2px solid #a9cdb2;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PERSON
+   ========================================================= */
+
+.person {
+    position: absolute;
+
+    z-index: 20;
+
+    left: 7%;
+    top: 18%;
+
+    font-size: 25px;
+
+    transition: all 0.8s ease;
+}
+
+
+/* =========================================================
+   ROUTE ARROWS
+   ========================================================= */
+
+.path-arrow {
+    position: absolute;
+
+    z-index: 15;
+
+    color: #1769e8;
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+.arrow-1 {
+    left: 45%;
+    top: 13%;
+}
+
+.arrow-2 {
+    left: 64%;
+    top: 28%;
+}
+
+.arrow-3 {
+    left: 47%;
+    top: 39%;
+}
+
+.arrow-4 {
+    left: 37%;
+    top: 48%;
+}
+
+.arrow-5 {
+    left: 52%;
+    top: 67%;
+}
+
+.arrow-6 {
+    left: 64%;
+    top: 77%;
+}
+
+
+/* =========================================================
+   BOTTOM MESSAGE
+   ========================================================= */
+
+.bottom-message {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    margin-top: 14px;
+
+    padding: 13px 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: white;
+
+    border: 1px solid #d9e2ef;
+
+    border-radius: 9px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+    color: #12346b;
+
+    font-size: 14px;
+}
+
+.bottom-message button {
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   CHATBOT
+   ========================================================= */
+
+.chatbot {
+    width: 100%;
+
+    margin-top: 18px;
+
+    background: white;
+
+    border: 1px solid #d9e2ef;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+}
+
+.chatbot-header {
+    padding: 14px 18px;
+
+    background: #12346b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+.chat-messages {
+    height: 150px;
+
+    overflow-y: auto;
+
+    padding: 12px;
+
+    background: #f7f9fc;
+}
+
+.bot-message {
+    display: inline-block;
+
+    max-width: 80%;
+
+    padding: 10px 12px;
+
+    background: #e8f0ff;
+
+    border-radius: 9px;
+
+    color: #344054;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+.chat-input {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    border-top: 1px solid #ddd;
+
+    background: white;
+}
+
+.chat-input input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 10px;
+
+    border: 1px solid #ccd5e2;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+.chat-input button {
+    padding: 10px 17px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1769e8;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .navigation-body {
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .start-button {
+        min-height: 50px;
+    }
+
+    .map {
+        height: 650px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .navigation-page {
+        padding: 8px;
+    }
+
+    .nav-header {
+        height: auto;
+
+        padding: 15px;
+
+        gap: 10px;
+    }
+
+    .logo-section h1 {
+        font-size: 18px;
+    }
+
+    .voice-button {
+        padding: 8px 10px;
+
+        font-size: 13px;
+    }
+
+    .navigation-body {
+        display: block;
+    }
+
+    .left-panel {
+        display: flex;
+    }
+
+    .map {
+        height: 550px;
+    }
+
+    .platform-box {
+        font-size: 15px;
+    }
+
+    .room {
+        font-size: 12px;
+    }
+
+    .chatbot {
+        margin-top: 15px;
+    }
+}

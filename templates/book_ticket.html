@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Book Ticket
+{% endblock %}
+
+{% block content %}
+
+<div class="booking-container">
+
+    <h1>Book Metro Ticket</h1>
+
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+
+
+        <label>Source Station</label><br>
+<select name="source" required>
+    <option value="" selected disabled>Select Source Station</option>
+    <option>Miyapur</option>
+    <option>JNTU College</option>
+    <option>KPHB Colony</option>
+    <option>Kukatpally</option>
+    <option>Ameerpet</option>
+</select>
+
+
+<br><br>
+
+        <label>Destination Station</label><br>
+
+<select name="destination" required>
+    <option value="" selected disabled>Select Destination Station</option>
+    <option>Miyapur</option>
+    <option>JNTU College</option>
+    <option>KPHB Colony</option>
+    <option>Kukatpally</option>
+    <option>Ameerpet</option>
+</select>
+<br><br>
+
+        <label>Travel Date :</label>
+        <input type="date" name="travel_date" required>
+
+        <label>Passengers :</label>
+        <input type="number" min="1" value="1" name="passengers"> <br><br>
+
+        <button type="submit">
+            Book Ticket
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
